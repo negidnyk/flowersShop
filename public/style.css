@@ -1,0 +1,321 @@
+/* ---------------- HEADER ---------------- */
+header {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Лого всегда слева */
+.header-logo {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.header-logo-btn {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Навигация занимает всё оставшееся место */
+.header-navigation {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Центральное меню */
+.header-site-navigation-list {
+    display: flex;
+    gap: 20px;
+    margin: 0 auto; /* центрирование */
+}
+
+.header-site-navigation-list a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Профиль справа */
+.header-profile-section {
+    display: flex;
+    align-items: center; /* выравнивание по центру вертикали */
+    gap: 15px;
+}
+
+.header-profile-section a {
+    display: flex;           /* делаем кнопки флекс-элементами */
+    align-items: center;     /* выравнивание текста и иконки по центру */
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    line-height: 1;          /* убираем лишние отступы по высоте */
+}
+
+.header-cart-btn span {
+    display: inline-block;
+    min-width: 18px;
+    text-align: center;
+    line-height: 1;
+}
+
+/* ---------------- BODY ---------------- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.catalog-container {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+    align-items: flex-start; /* Сайдбар и контент выровнены по верхнему краю */
+}
+
+/* Контент (заголовок + товары) справа от сайдбара */
+.catalog-content {
+    flex: 1; /* занимает всё оставшееся место */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Заголовок каталога */
+.catalog-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.catalog-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 50px;
+    height: 4px;
+    background-color: #e91e63;
+    border-radius: 2px;
+}
+
+.products {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.card {
+    border: 1px solid black;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: pink;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ---------------- CATALOG & SIDEBAR ---------------- */
+
+/* Кнопка открытия/закрытия */
+.toggle-sidebar-btn {
+    display: none; /* по умолчанию скрыта на больших экранах */
+    margin: 10px 20px;
+    padding: 8px 12px;
+    background: #e91e63;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.toggle-sidebar-btn:hover {
+    background: #c2185b;
+}
+
+/* Сайдбар */
+.sidebar {
+    width: 220px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    height: fit-content;
+    transition: transform 0.3s ease;
+    position: relative; /* чтобы кнопка закрытия внутри */
+}
+
+/* Кнопка закрытия сайдбара */
+.close-sidebar-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #f48fb1; /* более мягкий розовый */
+    color: #fff;         /* белый крестик */
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.close-sidebar-btn:hover {
+    background: #ec407a; /* чуть темнее мягкого розового */
+}
+
+/* Скрываем на больших экранах */
+@media (min-width: 901px) {
+    .close-sidebar-btn {
+        display: none;
+    }
+}
+
+/* Заголовок в сайдбаре */
+.sidebar h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 12px 0; /* уменьшили верхний отступ */
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+}
+
+/* Список фильтров */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Кнопки/ссылки фильтров */
+.sidebar ul li a,
+.sidebar ul li button {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+    text-align: left;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li button:hover {
+    background: #ffe4ec; /* нежно-розовый */
+    border-color: #e91e63;
+    color: #e91e63;
+}
+
+/* Активный фильтр */
+.sidebar ul li a.active,
+.sidebar ul li button.active {
+    background: #e91e63;
+    color: #fff;
+    border-color: #e91e63;
+}
+
+/* --- Мобильный режим --- */
+@media (max-width: 900px) {
+    .toggle-sidebar-btn {
+        display: inline-block; /* показываем кнопку */
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        max-width: 250px;
+        transform: translateX(-100%); /* скрыто */
+        z-index: 1000;
+        border-radius: 0;
+    }
+
+    .sidebar.active {
+        transform: translateX(0); /* показать */
+    }
+
+    /* Товары */
+    .products {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* ---------------- FOOTER ---------------- */
+footer {
+    background: #fff;
+    border-top: 1px solid #ddd;
+    padding: 15px 20px;
+}
+
+footer .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Соцсети и контакты */
+.footer-socials,
+.footer-contacts {
+    font-size: 14px;
+    color: #333;
+}
+
+.footer-socials ul,
+.footer-contacts ul {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+    display: flex;
+    gap: 15px;
+}
+
+.footer-socials a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.footer-socials a:hover {
+    color: #e91e63; /* розовый акцент */
+}

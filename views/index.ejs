@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flower shop</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="header-logo"><a class="header-logo-btn" href="/">Flowers shop🌸</a></div>
+        <nav class="header-navigation">
+            <div class="header-site-navigation-list">
+                <a class="header-home-btn" href="/">Home</a>
+                <a class="header-about-btn" href="/">Catalog</a>
+                <a class="header-about-btn" href="/">About</a>
+                <a class="header-socials-btn" href="/">Socials</a>
+            </div>
+            <div class="header-profile-section">
+                <a class="header-profile-btn" href="/">Profile</a>
+                <a class="header-cart-btn" href="/cart">Cart 🛒 (<span id="cart-count">0</span>)</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- Кнопка для открытия sidebar -->
+<button id="toggle-sidebar" class="toggle-sidebar-btn">☰ Фильтры</button>
+
+<div class="catalog-container">
+    <!-- Боковое меню -->
+    <aside class="sidebar" id="sidebar">
+        <button class="close-sidebar-btn">✖</button>
+        <h3>Фильтр по магазинам</h3>
+        <ul>
+            <li><a class="filter-link" href="/">Все магазины</a></li>
+            <% stores.forEach(store => { %>
+                <li><a class="filter-link" href="/store/<%= store.id %>"><%= store.name %></a></li>
+            <% }) %>
+        </ul>
+    </aside>
+
+    <!-- Контент (заголовок + товары) -->
+    <div class="catalog-content">
+        <h1 class="catalog-title">Catalog</h1>
+        <div class="products">
+            <% products.forEach(product => { %>
+                <div class="card">
+                    <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                    <h2><%= product.name %></h2>
+                    <p><%= product.description %></p>
+                    <strong><%= product.price %> ₽</strong>
+                    <button class="add-to-cart"
+                            data-id="<%= product.id %>"
+                            data-name="<%= product.name %>"
+                            data-price="<%= product.price %>">
+                        Добавить в корзину
+                    </button>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
+<!-- Подключаем скрипты -->
+<script src="/cart.js" defer></script>
+<script src="/filter.js" defer></script>
+
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-socials">
+            Our socials:
+            <ul>
+                <li><a href="">Instagram</a></li>
+                <li><a href="">Facebook</a></li>
+                <li><a href="">Twitter</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contacts">
+            Contact us:
+            <ul>
+                <li>Telegram: @sheesh</li>
+                <li>Cell phone: +10203292343</li>
+            </ul>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
